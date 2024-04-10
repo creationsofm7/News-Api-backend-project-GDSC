@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'posts.apps.PostsConfig',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +56,12 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ROOT_URLCONF = 'newsapi.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 
 TEMPLATES = [
     {

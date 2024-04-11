@@ -9,13 +9,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - Python 3.8 or higher
-- Django 3.2.8
+- Django 5.0.8
 - Django Rest Framework
 
 You can install these packages using pip:
 
 ```sh
-pip install python==3.8.10 django==3.2.8 djangorestframework==3.12.4
+pip install python==3.8.10 django==5.2.8 djangorestframework==3.12.4
 ```
 
 ### Installing

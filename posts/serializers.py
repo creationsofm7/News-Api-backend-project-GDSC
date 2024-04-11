@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import NewsPost, Comment
+from accounts.models import CustomUser
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +16,8 @@ class CommentSerializer(serializers.ModelSerializer):
 # Compare this snippet from posts/permissions.py:
 # from rest_framework import permissions    
 #
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'password', )
+        extra_kwargs = {'password': {'write_only': True}}

@@ -79,6 +79,9 @@ The following endpoints are available:
 - `/api/comments/<int:pk>/` - POST: Create a new comment for a news article
 - `/api/comments/<int:pk>/` - PUT: Update a comment
 - `/api/comments/<int:pk>/` - DELETE: Delete a comment
+- `api/ signup/ [name='signup']`
+- `api/ create/ [name='create_post']`
+- `api/ create_comment/ [name='create_comment']`
 
 ## Built With
 

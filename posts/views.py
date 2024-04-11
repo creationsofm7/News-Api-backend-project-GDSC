@@ -10,7 +10,6 @@ from .serializers import PostSerializer, CommentSerializer
 class PostList(generics.ListCreateAPIView):
     queryset = NewsPost.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticated,)
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = NewsPost.objects.all()
@@ -30,8 +29,18 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
 class PostCreate(generics.CreateAPIView):
     queryset = NewsPost.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticated) 
+    permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class CommentCreate(generics.CreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class SignUpView(generics.CreateAPIView):
@@ -41,3 +50,5 @@ class SignUpView(generics.CreateAPIView):
         user = serializer.save()
         user.set_password(serializer.validated_data['password'])
         user.save()
+
+        
